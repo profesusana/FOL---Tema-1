@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Interactivo FOL - Tema 1: La Salud Laboral y los Riesgos</title>
+    <!-- Tailwind CSS para diseño moderno y visual -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- CABECERA -->
+    <header class="w-full py-6 px-6 bg-slate-900/60 backdrop-blur-md border-b border-slate-800 shadow-lg sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-400 to-teal-400 bg-clip-text text-transparent">
+                    Formación y Orientación Laboral
+                </h1>
+                <p class="text-xs text-slate-400">Tema 1: La Salud Laboral y los Riesgos | Elaboración de Susana Felipe Ortiz, con ayuda de la IA</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="restartQuiz()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-semibold rounded-xl transition shadow flex items-center gap-1.5 cursor-pointer">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Volver al Inicio
+                </button>
+                <div id="badge-container" class="hidden">
+                    <span class="px-3 py-1.5 bg-indigo-950/80 border border-indigo-500/30 text-indigo-300 text-xs font-medium rounded-full shadow-inner" id="score-badge">
+                        Puntuación: 0 / 0
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="w-full max-w-3xl mx-auto px-4 py-8 flex-grow flex items-center justify-center">
+
+        <!-- PANTALLA 1: BIENVENIDA -->
+        <div id="screen-welcome" class="w-full bg-slate-800/80 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-8 sm:p-10 shadow-2xl text-center transform transition-all">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 mb-6 shadow-lg">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">¡Pon a prueba tus conocimientos!</h2>
+            <p class="text-slate-300 text-sm sm:text-base mb-6 max-w-xl mx-auto leading-relaxed">
+                Repasa el <strong>Tema 1 (La Salud Laboral y los Riesgos)</strong> con este test interactivo de 100 preguntas basadas íntegramente en los apuntes oficiales.
+            </p>
+
+            <div class="bg-slate-900/60 border border-slate-700/50 rounded-2xl p-4 mb-8 max-w-md mx-auto text-left text-xs sm:text-sm text-slate-300 space-y-2">
+                <div class="flex items-center gap-2 text-indigo-400 font-semibold mb-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Elige el modo de test:
+                </div>
+                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-slate-800 transition">
+                    <input type="radio" name="mode" value="15" class="text-indigo-600 focus:ring-indigo-500">
+                    <span><strong>Test Corto:</strong> 15 preguntas aleatorias</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-slate-800 transition">
+                    <input type="radio" name="mode" value="30" class="text-indigo-600 focus:ring-indigo-500">
+                    <span><strong>Test Medio:</strong> 30 preguntas aleatorias</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-slate-800 transition">
+                    <input type="radio" name="mode" value="100" checked class="text-indigo-600 focus:ring-indigo-500">
+                    <span><strong>Examen Completo:</strong> Las 100 preguntas del tema</span>
+                </label>
+            </div>
+
+            <button onclick="startQuiz()" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30 transform transition active:scale-95 cursor-pointer">
+                Comenzar Test 🚀
+            </button>
+            
+            <p class="text-xs text-slate-400 mt-6">Elaboración de Susana Felipe Ortiz, con ayuda de la IA</p>
+        </div>
+
+        <!-- PANTALLA 2: PREGUNTA INTERACTIVA -->
+        <div id="screen-quiz" class="w-full bg-slate-800/80 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl hidden">
+            <!-- Barra de progreso -->
+            <div class="mb-6">
+                <div class="flex justify-between text-xs font-semibold text-slate-400 mb-2">
+                    <span id="question-counter">Pregunta 1 de 100</span>
+                    <span id="progress-percent">1%</span>
+                </div>
+                <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-700">
+                    <div id="progress-bar" class="bg-gradient-to-r from-indigo-500 to-teal-400 h-full transition-all duration-300" style="width: 1%;"></div>
+                </div>
+            </div>
+
+            <!-- Enunciado -->
+            <h3 id="question-text" class="text-lg sm:text-xl font-bold text-white mb-6 leading-snug">
+                <!-- Aquí se inyecta la pregunta -->
+            </h3>
+
+            <!-- Opciones -->
+            <div id="options-container" class="space-y-3 mb-6">
+                <!-- Se inyectan las opciones dinámicamente -->
+            </div>
+
+            <!-- Feedback / Explicación -->
+            <div id="feedback-box" class="hidden p-4 rounded-xl mb-6 text-sm border">
+                <!-- Se inyecta retroalimentación -->
+            </div>
+
+            <!-- Botón Siguiente -->
+            <div class="flex justify-end">
+                <button id="btn-next" onclick="nextQuestion()" class="hidden px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-md transition cursor-pointer">
+                    Siguiente Pregunta →
+                </button>
+            </div>
+        </div>
+
+        <!-- PANTALLA 3: RESULTADOS -->
+        <div id="screen-results" class="w-full bg-slate-800/80 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-8 sm:p-10 shadow-2xl text-center hidden">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-teal-500/20 text-teal-400 border border-teal-500/30 mb-6 shadow-lg">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">¡Test Completado!</h2>
+            <p id="result-message" class="text-slate-300 text-base mb-6">Has demostrado un gran dominio del Tema 1.</p>
+
+            <div class="bg-slate-900/80 border border-slate-700/60 rounded-2xl p-6 max-w-sm mx-auto mb-8 shadow-inner">
+                <div class="text-slate-400 text-xs uppercase tracking-wider mb-1">Puntuación Final</div>
+                <div id="final-score" class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-indigo-400 to-teal-400 bg-clip-text text-transparent">
+                    0 / 100
+                </div>
+                <div id="final-percentage" class="text-sm font-medium text-slate-400 mt-2">0% de aciertos</div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="restartQuiz()" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/30 transition cursor-pointer">
+                    Volver a Intentarlo 🔄
+                </button>
+            </div>
+            
+            <p class="text-xs text-slate-400 mt-6">Elaboración de Susana Felipe Ortiz, con ayuda de la IA</p>
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="w-full py-4 px-6 text-center text-xs text-slate-500 border-t border-slate-800 bg-slate-900/40">
+        Formación y Orientación Laboral • Elaboración de Susana Felipe Ortiz, con ayuda de la IA
+    </footer>
+
+    <!-- SCRIPT DE FUNCIONAMIENTO Y BANCO DE 100 PREGUNTAS (TEMA 1) -->
+    <script>
+        const fullQuestionBank = [
+            // 1
+            {
+                q: "¿Cómo define la Organización Mundial de la Salud (OMS) el concepto de salud?",
+                options: [
+                    "Como el estado de completo bienestar físico, mental y social, y no solamente la ausencia de afecciones o enfermedades.",
+                    "Como la capacidad exclusiva de un individuo para rendir laboralmente sin fatiga.",
+                    "Como la ausencia total de dolencias musculares a lo largo de la vida activa.",
+                    "Como el equilibrio presupuestario entre la seguridad social y la mutua."
+                ],
+                correct: 0,
+                exp: "La OMS define la salud como el completo bienestar físico, mental y social, y no solo ausencia de enfermedad."
+            },
+            // 2
+            {
+                q: "¿Qué se entiende por 'condición de trabajo' según la Ley de Prevención de Riesgos Laborales?",
+                options: [
+                    "Cualquier característica del trabajo que pueda tener una influencia significativa en la generación de riesgos para la seguridad y salud del trabajador.",
+                    "Únicamente el salario base fijado en el convenio colectivo sectorial.",
+                    "El horario estricto de entrada y salida marcado por el empresario.",
+                    "La distancia kilométrica existente entre el domicilio y el centro laboral."
+                ],
+                correct: 0,
+                exp: "Condición de trabajo es cualquier característica con influencia en la generación de riesgos laborales."
+            },
+            // 3
+            {
+                q: "¿Qué es un 'riesgo laboral'?",
+                options: [
+                    "La posibilidad de que un trabajador sufra un determinado daño derivado del trabajo.",
+                    "Un accidente que ya se ha producido causando lesiones graves.",
+                    "Una sanción administrativa impuesta por la Inspección de Trabajo.",
+                    "El coste económico que asume la empresa tras una baja médica."
+                ],
+                correct: 0,
+                exp: "El riesgo laboral es la posibilidad de que un trabajador sufra un determinado daño derivado del trabajo."
+            },
+            // 4
+            {
+                q: "¿Cómo se define el 'accidente de trabajo' desde una perspectiva legal estricta (Art. 156 de la LGSS)?",
+                options: [
+                    "Toda lesión corporal que el trabajador sufra con ocasión o por consecuencia del trabajo que ejecute por cuenta ajena.",
+                    "Cualquier indisposición física ocurrida en un día festivo en el domicilio.",
+                    "Un daño psicológico derivado exclusivamente de discusiones familiares.",
+                    "Cualquier enfermedad común de larga duración superior a 365 días."
+                ],
+                correct: 0,
+                exp: "Legalmente, el accidente de trabajo es toda lesión corporal sufrida con ocasión o por consecuencia del trabajo por cuenta ajena."
+            },
+            // 5
+            {
+                q: "¿Qué es un accidente 'in itinere'?",
+                options: [
+                    "El que sufre el trabajador al ir o al volver del lugar de trabajo.",
+                    "El que ocurre dentro de la nave industrial en horario de descanso.",
+                    "El traslado realizado en vehículo de la empresa durante un viaje de negocios.",
+                    "El accidente provocado por dolo o imprudencia temeraria exclusiva."
+                ],
+                correct: 0,
+                exp: "El accidente in itinere es el sufrido al ir o volver del domicilio al centro de trabajo."
+            },
+            // 6
+            {
+                q: "¿Se considera accidente de trabajo el sufrido por un cargo sindical en el ejercicio de sus funciones de representación?",
+                options: [
+                    "Sí, legalmente se asimila como accidente de trabajo.",
+                    "No, en ningún caso se consideran profesionales.",
+                    "Solo si cuenta con la autorización notarial previa del empresario.",
+                    "Depende de la comunidad autónoma donde ocurra."
+                ],
+                correct: 0,
+                exp: "Los actos de representación sindical se consideran asimilados a accidentes de trabajo por ley."
+            },
+            // 7
+            {
+                q: "¿Qué requisito es necesario para que una enfermedad sea catalogada oficialmente como 'enfermedad profesional' en España?",
+                options: [
+                    "Que esté contraída a consecuencia del trabajo ejecutado por cuenta ajena en las actividades especificadas en el cuadro legal y causada por la acción de elementos contemplados en él.",
+                    "Que afecte simultáneamente al 50% de la plantilla de la empresa.",
+                    "Que el trabajador tenga más de 60 años de edad y 40 de cotización.",
+                    "Que se contraiga en el trayecto de ida y vuelta al domicilio."
+                ],
+                correct: 0,
+                exp: "Debe estar recogida en el cuadro oficial de enfermedades profesionales y contraída por actividades y sustancias regladas."
+            },
+            // 8
+            {
+                q: "¿Qué diferencia fundamental existe entre un accidente de trabajo y una enfermedad profesional?",
+                options: [
+                    "El accidente de trabajo surge de forma brusca e imprevista, mientras que la enfermedad profesional se gesta de forma lenta y paulatina por exposición continuada.",
+                    "La enfermedad profesional es siempre mortal y el accidente de trabajo nunca.",
+                    "El accidente de trabajo se indemniza por civil y la enfermedad por penal.",
+                    "No existe ninguna diferencia técnica ni jurídica."
+                ],
+                correct: 0,
+                exp: "El accidente es súbito y la enfermedad profesional es de evolución lenta y continuada."
+            },
+            // 9
+            {
+                q: "¿Qué son los daños 'derivados del trabajo' distintos de los accidentes y enfermedades profesionales?",
+                options: [
+                    "La fatiga, el estrés, la carga mental y la insatisfacción laboral.",
+                    "Las multas coercitivas de la Seguridad Social.",
+                    "Los despidos objetivos por causas económicas.",
+                    "Las huelgas sectoriales de carácter legal."
+                ],
+                correct: 0,
+                exp: "La fatiga, el estrés y la carga mental son daños derivados del trabajo distintos de accidentes y enfermedades."
+            },
+            // 10
+            {
+                q: "¿Qué Ley constituyó el marco normativo fundamental de la prevención de riesgos laborales en España adaptándose a directivas europeas?",
+                options: [
+                    "La Ley 31/1995, de Prevención de Riesgos Laborales (LPRL).",
+                    "El Estatuto de los Trabajadores de 1980.",
+                    "La Ley General de Sanidad de 1986.",
+                    "El Código Civil del siglo XIX."
+                ],
+                correct: 0,
+                exp: "La Ley 31/1995 de Prevención de Riesgos Laborales (LPRL) es la norma básica en España."
+            },
+            // 11
+            {
+                q: "¿Cuál es el principio inspirador fundamental de la Ley de Prevención de Riesgos Laborales?",
+                options: [
+                    "El principio de prevención y anticipación frente al daño.",
+                    "El principio de compensación económica posterior al accidente.",
+                    "La asunción del riesgo por parte del trabajador a cambio de un plus salarial.",
+                    "La externalización total de las responsabilidades penales."
+                ],
+                correct: 0,
+                exp: "El principio inspirador de la LPRL es la prevención y anticipación frente al daño."
+            },
+            // 12
+            {
+                q: "¿A quién corresponde la responsabilidad principal de garantizar la seguridad y salud de los trabajadores en la empresa?",
+                options: [
+                    "Al empresario.",
+                    "A los propios trabajadores de forma individual.",
+                    "A la Inspección de Trabajo y Seguridad Social en exclusiva.",
+                    "A los fabricantes de maquinaria industrial."
+                ],
+                correct: 0,
+                exp: "El empresario tiene el deber de protección y responsabilidad principal sobre la seguridad de su plantilla."
+            },
+            // 13
+            {
+                q: "¿Qué obligaciones generales tiene el trabajador en materia de prevención de riesgos?",
+                options: [
+                    "Utilizar correctamente las máquinas, herramientas, sustancias y EPIs, y velar por su propia seguridad y la de los demás.",
+                    "Pagar de su bolsillo los costes de la evaluación de riesgos anual.",
+                    "Realizar inspecciones sorpresivas a otras empresas de la competencia.",
+                    "Redactar los planes de emergencia corporativos."
+                ],
+                correct: 0,
+                exp: "El trabajador debe usar correctamente medios y EPIs y velar por su seguridad y la de sus compañeros."
+            },
+            // 14
+            {
+                q: "¿Qué son los Delegados de Prevención?",
+                options: [
+                    "Los representantes de los trabajadores con funciones específicas en materia de prevención de riesgos en la empresa.",
+                    "Inspectores de hacienda adscritos al Ministerio de Trabajo.",
+                    "Técnicos superiores externos contratados por la mutua.",
+                    "Directores de recursos humanos de las grandes corporaciones."
+                ],
+                correct: 0,
+                exp: "Los Delegados de Prevención son los representantes de los trabajadores en materia preventiva."
+            },
+            // 15
+            {
+                q: "¿Qué es el Comité de Seguridad y Salud?",
+                options: [
+                    "Un órgano paritario y colegiado de participación destinado a la consulta regular de las actuaciones de la empresa en prevención.",
+                    "Un tribunal arbitral con potestad para sancionar penalmente.",
+                    "Una asociación de mutuas colaboradoras de la seguridad social.",
+                    "Un sindicato único del sector metalúrgico."
+                ],
+                correct: 0,
+                exp: "El Comité de Seguridad y Salud es un órgano paritario y colegiado de participación y consulta."
+            },
+            // 16
+            {
+                q: "¿En qué empresas es obligatorio constituir un Comité de Seguridad y Salud?",
+                options: [
+                    "En aquellas empresas o centros de trabajo que cuenten con 50 o más trabajadores.",
+                    "En todas las empresas sin importar el número de empleados.",
+                    "Únicamente en aquellas con más de 500 trabajadores fijos.",
+                    "Solo en el sector de la construcción y minería."
+                ],
+                correct: 0,
+                exp: "Es obligatorio constituirlo en empresas de 50 o más trabajadores."
+            },
+            // 17
+            {
+                q: "¿Qué modalidades de organización preventiva puede adoptar una empresa según la LPRL?",
+                options: [
+                    "Asunción personal por el empresario, trabajadores designados, servicio de prevención propio, servicio ajeno o mancomunado.",
+                    "Contratación exclusiva de seguros privados de vida.",
+                    "Inspección estatal mensual obligatoria.",
+                    "Sorteo aleatorio entre la plantilla."
+                ],
+                correct: 0,
+                exp: "Las modalidades son: asunción por el empresario, designación de trabajadores, servicio propio, ajeno o mancomunado."
+            },
+            // 18
+            {
+                q: "¿Cuándo es obligatorio que una empresa constituya un 'Servicio de Prevención Propio'?",
+                options: [
+                    "En empresas de más de 500 trabajadores (o de 250 a 500 en actividades especialmente peligrosas del Anexo I del RSP), o cuando lo decida la autoridad laboral.",
+                    "En cualquier pequeña tienda de barrio con dos empleados.",
+                    "Nunca es obligatorio si se contrata un seguro.",
+                    "Solo en empresas públicas del Estado."
+                ],
+                correct: 0,
+                exp: "Se exige servicio propio en empresas de más de 500 trabajadores o por especial peligrosidad según el Anexo I del RSP."
+            },
+            // 19
+            {
+                q: "¿Qué es un Servicio de Prevención Ajeno?",
+                options: [
+                    "Una entidad especializada acreditada que presta a la empresa el asesoramiento y apoyo necesario en las especialidades preventivas.",
+                    "Un departamento interno de contabilidad financiera.",
+                    "Un servicio médico gratuito de la Seguridad Social pública.",
+                    "Una consultora jurídica de derecho mercantil."
+                ],
+                correct: 0,
+                exp: "El servicio ajeno es una entidad especializada acreditada para prestar asesoramiento preventivo."
+            },
+            // 20
+            {
+                q: "¿Qué función principal tiene la Inspección de Trabajo y Seguridad Social en materia preventiva?",
+                options: [
+                    "Vigilar el cumplimiento de la normativa de prevención, asesorar, investigar accidentes y sancionar los incumplimientos.",
+                    "Diseñar los planes de autoprotección de cada empresa.",
+                    "Suministrar EPIs gratuitos a los autónomos.",
+                    "Cobrar las cotizaciones sociales mensuales."
+                ],
+                correct: 0,
+                exp: "La Inspección vigila el cumplimiento de la normativa, investiga accidentes y sanciona."
+            },
+            // 21
+            {
+                q: "¿Qué organismo técnico autónomo asesora en materia de prevención a las comunidades autónomas y empresas a nivel estatal?",
+                options: [
+                    "El Instituto Nacional de Seguridad y Salud en el Trabajo (INSST).",
+                    "El Banco de España.",
+                    "La Dirección General de Tráfico (DGT).",
+                    "El Tribunal Supremo."
+                ],
+                correct: 0,
+                exp: "El INSST es el órgano científico técnico encargado de asesorar y difundir conocimientos preventivos."
+            },
+            // 22
+            {
+                q: "¿Qué es una Mutua Colaboradora con la Seguridad Social en el ámbito laboral?",
+                options: [
+                    "Asociaciones de empresarios autorizadas para colaborar en la gestión de las contingencias de accidentes de trabajo y enfermedades profesionales.",
+                    "Bancos privados de inversión bursátil.",
+                    "Organizaciones sindicales internacionales.",
+                    "Compañías de seguros de hogar y automóviles."
+                ],
+                correct: 0,
+                exp: "Las mutuas son asociaciones de empresarios autorizadas para gestionar contingencias profesionales."
+            },
+            // 23
+            {
+                q: "¿Qué derecho asiste al trabajador ante un riesgo grave e inminente en su puesto de trabajo?",
+                options: [
+                    "Interrumpir su actividad y abandonar el lugar de trabajo cuando considere que dicha actividad entraña un riesgo grave e inminente.",
+                    "Continuar trabajando obligatoriamente hasta que llegue la policía.",
+                    "Exigir una indemnización salarial triple inmediata.",
+                    "Despedir al superior jerárquico responsable."
+                ],
+                correct: 0,
+                exp: "Ante riesgo grave e inminente, el trabajador tiene derecho a interrumpir su actividad y abandonar el puesto."
+            },
+            // 24
+            {
+                q: "¿Qué se entiende por 'daño derivado del trabajo' en sentido amplio?",
+                options: [
+                    "Las enfermedades, patologías o lesiones sufridas con motivo u ocasión del trabajo.",
+                    "Exclusivamente las multas de tráfico durante la jornada.",
+                    "La rotura de herramientas de propiedad privada del empleado.",
+                    "Los gastos de desplazamiento en transporte público."
+                ],
+                correct: 0,
+                exp: "Son las enfermedades, patologías o lesiones sufridas con motivo u ocasión del trabajo."
+            },
+            // 25
+            {
+                q: "¿Cuál de los siguientes factores NO se considera una disciplina preventiva básica en FOL?",
+                options: [
+                    "El marketing digital corporativo.",
+                    "La seguridad en el trabajo.",
+                    "La higiene industrial y la ergonomía.",
+                    "La medicina del trabajo y psicosociología."
+                ],
+                correct: 0,
+                exp: "El marketing no forma parte de las disciplinas preventivas básicas."
+            },
+            // 26
+            {
+                q: "¿Qué costes provocan los accidentes laborales para la empresa según la economía de la prevención?",
+                options: [
+                    "Costes directos (primas de seguros, indemnizaciones) y costes indirectos (tiempo perdido, daño de imagen, baja productividad).",
+                    "Únicamente costes fiscales deducibles en el impuesto de sociedades.",
+                    "Cero costes, ya que todo lo cubre íntegramente el Estado.",
+                    "Costes de carácter exclusivamente penal sin repercusión económica."
+                ],
+                correct: 0,
+                exp: "Los accidentes generan costes directos e indirectos muy elevados para la empresa."
+            },
+            // 27
+            {
+                q: "¿Qué finalidad persigue la evaluación de riesgos en una empresa?",
+                options: [
+                    "Obtener la información necesaria para que el empresario pueda tomar una decisión idónea sobre la necesidad de adoptar medidas preventivas.",
+                    "Justificar despidos colectivos por causas objetivas.",
+                    "Evitar la visita anual de los inspectores de hacienda.",
+                    "Calcular los beneficios netos trimestrales."
+                ],
+                correct: 0,
+                exp: "La evaluación de riesgos proporciona información para adoptar medidas preventivas idóneas."
+            },
+            // 28
+            {
+                q: "¿Cuándo debe actualizarse o revisarse una evaluación de riesgos laborales?",
+                options: [
+                    "Cuando cambien las condiciones de trabajo, se introduzcan nuevas tecnologías, se produzcan daños o lo exija la normativa.",
+                    "Únicamente cada diez años de forma improrrogable.",
+                    "Solo cuando lo solicite por escrito un cliente externo.",
+                    "Nunca una vez firmada por primera vez."
+                ],
+                correct: 0,
+                exp: "Debe revisarse ante cambios de condiciones, nuevas tecnologías, daños sufridos o exigencia normativa."
+            },
+            // 29
+            {
+                q: "¿Qué es el Plan de Prevención de Riesgos Laborales?",
+                options: [
+                    "La herramienta a través de la cual se integra la prevención en el sistema general de gestión de la empresa.",
+                    "Un folleto publicitario de la mutua de accidentes.",
+                    "Un contrato mercantil firmado con los proveedores de materias primas.",
+                    "La nómina desglosada de los técnicos de prevención."
+                ],
+                correct: 0,
+                exp: "El Plan de Prevención es la herramienta para integrar la prevención en la gestión general de la empresa."
+            },
+            // 30
+            {
+                q: "¿Qué papel desempeñan los trabajadores designados dentro de la organización preventiva?",
+                options: [
+                    "Asumir tareas preventivas con capacidad y medios adecuados cuando la empresa no precise un servicio propio o ajeno completo.",
+                    "Sustituir al empresario en todas sus funciones mercantiles.",
+                    "Ejercer de jueces en los tribunales laborales.",
+                    "Cobrar las cotizaciones de la seguridad social."
+                ],
+                correct: 0,
+                exp: "Los trabajadores designados asumen tareas preventivas con capacidad y medios adecuados."
+            },
+            // 31
+            {
+                q: "¿Qué es un servicio de prevención mancomunado?",
+                options: [
+                    "Un servicio común constituido por varias empresas que desarrollan actividades simultáneamente en un mismo centro de trabajo o sector.",
+                    "Una empresa pública estatal de bomberos.",
+                    "Una mutua colaboradora de ámbito internacional.",
+                    "Un sindicato de clase mayoritario."
+                ],
+                correct: 0,
+                exp: "El servicio mancomunado es común para varias empresas que desarrollan actividades en un mismo centro o sector."
+            },
+            // 32
+            {
+                q: "¿Qué responsabilidad penal puede acarrear para el empresario la infracción grave de las normas de seguridad con resultado de muerte o lesión grave?",
+                options: [
+                    "Responsabilidades penales con penas privativas de libertad según el Código Penal (delitos contra los derechos de los trabajadores).",
+                    "Una amonestación verbal privada y sin multas.",
+                    "La obligación de hacer un cursillo online de dos horas.",
+                    "Exclusivamente el pago de una tasa municipal."
+                ],
+                correct: 0,
+                exp: "El incumplimiento grave con resultado de daño puede acarrear responsabilidad penal y penas de prisión."
+            },
+            // 33
+            {
+                q: "¿Qué es el recargo de prestaciones en caso de accidente de trabajo por falta de medidas de seguridad?",
+                options: [
+                    "Un aumento en las prestaciones económicas de la Seguridad Social (entre un 30% y un 50%) que recae directamente sobre el empresario infractor.",
+                    "Una subvención estatal que recibe el empresario por invertir en prevención.",
+                    "Un extra salarial que cobra el trabajador por hacer horas extra nocturnas.",
+                    "Un impuesto municipal sobre locales comerciales."
+                ],
+                correct: 0,
+                exp: "El recargo de prestaciones (30%-50%) recae directamente sobre el empresario infractor en caso de accidente por falta de medidas."
+            },
+            // 34
+            {
+                q: "¿Qué se entiende por 'incapacidad temporal' (IT) derivada de accidente laboral?",
+                options: [
+                    "Situación de baja médica en la que el trabajador recibe asistencia sanitaria y subsidio económico mientras está incapacitado temporalmente.",
+                    "El despido definitivo por causas económicas de la empresa.",
+                    "Una sanción disciplinaria de suspensión de empleo y sueldo por tres días.",
+                    "El periodo de vacaciones anuales retribuidas."
+                ],
+                correct: 0,
+                exp: "La incapacidad temporal es la situación de baja con asistencia y subsidio mientras dura la imposibilidad de trabajar."
+            },
+            // 35
+            {
+                q: "¿Qué diferencia existe entre incapacidad permanente total y absoluta?",
+                options: [
+                    "La total inhabilita para la profesión habitual pero permite dedicarse a otra distinta, y la absoluta inhabilita para toda profesión u oficio.",
+                    "La absoluta permite trabajar a media jornada y la total no.",
+                    "No existe diferencia económica ni legal.",
+                    "La total solo se aplica a menores de edad."
+                ],
+                correct: 0,
+                exp: "La total inhabilita para la profesión habitual y la absoluta para todo tipo de profesión u oficio."
+            },
+            // 36
+            {
+                q: "¿Qué es la gran invalidez?",
+                options: [
+                    "Situación en la que el trabajador incapacitado permanente necesita la asistencia de otra persona para los actos más esenciales de la vida.",
+                    "Un accidente múltiple que afecta a toda la plantilla de una fábrica.",
+                    "Una baja médica por gripe estacional superior a 15 días.",
+                    "La jubilación anticipada voluntaria a los 60 años."
+                ],
+                correct: 0,
+                exp: "La gran invalidez se da cuando el trabajador necesita ayuda de otra persona para los actos esenciales."
+            },
+            // 37
+            {
+                q: "¿Qué papel juega la información y formación en materia preventiva según la LPRL?",
+                options: [
+                    "Es una obligación intransgredible del empresario, debiendo impartirse a los trabajadores antes de la incorporación y ante cambios de puesto.",
+                    "Es un trámite voluntario que solo se realiza si sobra presupuesto.",
+                    "Corresponde pagarla íntegramente al trabajador mediante bonos.",
+                    "Solo es necesaria para directivos y mandos intermedios."
+                ],
+                correct: 0,
+                exp: "Informar y formar es una obligación empresarial ineludible antes de iniciar la actividad o cambiar de puesto."
+            },
+            // 38
+            {
+                q: "¿Qué son los reconocimientos médicos periódicos en la empresa?",
+                options: [
+                    "Revisiones de salud específicas en función de los riesgos del puesto, que son voluntarias para el trabajador (salvo excepciones legales).",
+                    "Controles obligatorios de consumo de sustancias prohibidas en vía pública.",
+                    "Exámenes psicotécnicos para renovar el carnet de conducir privado.",
+                    "Pruebas de rendimiento deportivo físico trimestrales."
+                ],
+                correct: 0,
+                exp: "Los reconocimientos médicos son específicos del puesto y en principio voluntarios para el trabajador."
+            },
+            // 39
+            {
+                q: "¿Qué es un plan de emergencia y autoprotección?",
+                options: [
+                    "El documento que establece la organización y procedimientos de respuesta ante situaciones de catástrofe, incendio o accidente grave.",
+                    "Un seguro privado contra impagos de clientes morosos.",
+                    "Un plan de pensiones privado complementario.",
+                    "La planificación de las vacaciones estivales de la plantilla."
+                ],
+                correct: 0,
+                exp: "El plan de emergencia establece la organización y protocolos ante incendios, catástrofes o accidentes graves."
+            },
+            // 40
+            {
+                q: "¿Qué son los simulacros de emergencia?",
+                options: [
+                    "Pruebas prácticas periódicas de evacuación y actuación para comprobar la eficacia del plan de emergencia.",
+                    "Exámenes teóricos escritos sobre normativa de tráfico.",
+                    "Juegos recreativos de empresa para fomentar el compañerismo.",
+                    "Inspecciones sorpresa de la Agencia Tributaria."
+                ],
+                correct: 0,
+                exp: "Los simulacros son prácticas periódicas para comprobar la eficacia de los planes de emergencia."
+            },
+            // 41
+            {
+                q: "Dentro de los daños profesionales, ¿cómo se denominan las lesiones físicas o mentales originadas por la exposición a agentes externos repentinos?",
+                options: [
+                    "Accidentes de trabajo.",
+                    "Enfermedades profesionales puras.",
+                    "Trastornos psicosociales crónicos.",
+                    "Patologías metabólicas hereditarias."
+                ],
+                correct: 0,
+                exp: "Las lesiones por exposición repentina corresponden a los accidentes de trabajo."
+            },
+            // 42
+            {
+                q: "¿Qué se evalúa al analizar los factores de riesgo de seguridad en el trabajo?",
+                options: [
+                    "Lugares, máquinas, herramientas, instalaciones eléctricas y riesgos de incendio.",
+                    "La satisfacción salarial y el clima social.",
+                    "La concentración de virus biológicos en laboratorios.",
+                    "Las condiciones atmosféricas en alta montaña."
+                ],
+                correct: 0,
+                exp: "Se evalúan lugares, máquinas, herramientas, instalaciones y riesgos de incendio."
+            },
+            // 43
+            {
+                q: "¿Qué objetivo persigue la higiene industrial como disciplina preventiva?",
+                options: [
+                    "Prevenir la aparición de enfermedades profesionales controlando los contaminantes físicos, químicos y biológicos.",
+                    "Limpiar los suelos y cristales de la oficina diariamente.",
+                    "Gestionar las nóminas y contratos mercantiles.",
+                    "Prevenir accidentes mecánicos por atrapamiento."
+                ],
+                correct: 0,
+                exp: "La higiene industrial previene enfermedades profesionales controlando agentes físicos, químicos y biológicos."
+            },
+            // 44
+            {
+                q: "¿Qué estudia la ergonomía en el ámbito de la prevención?",
+                options: [
+                    "La adaptación del puesto de trabajo a las características físicas y mentales de la persona.",
+                    "El rendimiento económico de las acciones bursátiles.",
+                    "La propagación de bacterias en aguas residuales.",
+                    "Las tensiones eléctricas de alta potencia."
+                ],
+                correct: 0,
+                exp: "La ergonomía adapta el puesto a las características físicas y mentales del trabajador."
+            },
+            // 45
+            {
+                q: "¿Qué se pretende evitar mediante la técnica de la psicosociología aplicada al trabajo?",
+                options: [
+                    "La fatiga mental, el estrés, el acoso (mobbing) y la insatisfacción laboral.",
+                    "Las caídas a distinto nivel en obras de construcción.",
+                    "Las descargas eléctricas por contactos indirectos.",
+                    "Las intoxicaciones por inhalación de disolventes."
+                ],
+                correct: 0,
+                exp: "La psicosociología previene la fatiga mental, estrés, mobbing e insatisfacción."
+            },
+            // 46
+            {
+                q: "¿Cuál es el objetivo principal de la medicina del trabajo?",
+                options: [
+                    "Mantener el nivel óptimo de salud de los trabajadores mediante la prevención, reparación y rehabilitación.",
+                    "Vender productos farmacéuticos dentro de la fábrica.",
+                    "Imponer sanciones disciplinarias por absentismo injustificado.",
+                    "Auditar las cuentas anuales de la empresa."
+                ],
+                correct: 0,
+                exp: "Busca mantener la salud óptima mediante prevención, reparación y rehabilitación."
+            },
+            // 47
+            {
+                q: "¿Qué es un daño 'leve' en el contexto de la siniestralidad laboral?",
+                options: [
+                    "Aquel que produce lesiones superficiales que no impiden continuar el trabajo o requieren una baja médica de muy corta duración.",
+                    "Una amputación traumática de extremidades.",
+                    "Una incapacidad permanente absoluta.",
+                    "El fallecimiento instantáneo."
+                ],
+                correct: 0,
+                exp: "El daño leve produce lesiones superficiales sin impedir continuar o con baja muy corta."
+            },
+            // 48
+            {
+                q: "¿Qué se considera un accidente de trabajo 'grave'?",
+                options: [
+                    "Aquel que comporta lesiones físicas importantes con riesgo vital o secuelas graves permanentes para el operario.",
+                    "Cualquier corte superficial en un dedo con tijera de oficina.",
+                    "Un retraso de cinco minutos en el fichaje de entrada.",
+                    "Una disputa dialéctica leve entre compañeros."
+                ],
+                correct: 0,
+                exp: "El accidente grave comporta lesiones importantes con riesgo vital o secuelas permanentes."
+            },
+            // 49
+            {
+                q: "¿Qué define legalmente a un accidente de trabajo 'mortal'?",
+                options: [
+                    "Aquel en el que se produce el fallecimiento del trabajador a consecuencia de las lesiones sufridas en el siniestro.",
+                    "Cualquier baja laboral superior a un año de duración.",
+                    "Una jubilación anticipada por enfermedad común.",
+                    "Un despido disciplinario procedente."
+                ],
+                correct: 0,
+                exp: "Es mortal cuando se produce el fallecimiento del trabajador a consecuencia del siniestro."
+            },
+            // 50
+            {
+                q: "¿Cuál es la principal ventaja de integrar la prevención de riesgos en la estructura general de la empresa?",
+                options: [
+                    "Conseguir una mayor eficacia en el control de los riesgos y la reducción de la siniestralidad y costes asociados.",
+                    "Cumplir un mero trámite burocrático ante la administración.",
+                    "Aumentar el precio de las acciones en bolsa de forma artificial.",
+                    "Reducir las obligaciones salariales del convenio."
+                ],
+                correct: 0,
+                exp: "Integrarla previene eficazmente riesgos, reduciendo siniestralidad y costes."
+            },
+            // 51
+            {
+                q: "¿Qué es el principio de 'responsabilidad empresarial' en prevención de riesgos?",
+                options: [
+                    "El empresario asume el coste y la obligación de garantizar la seguridad, sin que pueda trasladarla económicamente a los trabajadores.",
+                    "Los trabajadores pagan un seguro obligatorio mensual de su nómina.",
+                    "La responsabilidad recae exclusivamente en el Estado.",
+                    "Es una opción voluntaria que la empresa puede eludir."
+                ],
+                correct: 0,
+                exp: "El empresario asume la obligación y coste de garantizar la seguridad sin trasladarlo al trabajador."
+            },
+            // 52
+            {
+                q: "¿Qué papel juegan los convenios colectivos en materia de prevención de riesgos laborales?",
+                options: [
+                    "Pueden establecer mejoras y adaptaciones de la normativa general de prevención a sectores específicos de actividad.",
+                    "Están totalmente vetados para tratar temas de seguridad e higiene.",
+                    "Sustituyen por completo a la Ley de Prevención de Riesgos Laborales.",
+                    "Únicamente regulan las vacaciones y los salarios base."
+                ],
+                correct: 0,
+                exp: "Los convenios pueden establecer mejoras y adaptaciones sectoriales de la prevención."
+            },
+            // 53
+            {
+                q: "¿Qué es el principio de 'cooperación' entre empresas en un mismo centro de trabajo?",
+                options: [
+                    "La obligación de las distintas empresas concurrentes de intercambiar información sobre riesgos y coordinar medidas preventivas.",
+                    "La fusión mercantil obligatoria de las empresas asociadas.",
+                    "El reparto de beneficios económicos a partes iguales.",
+                    "La contratación de un único director general común."
+                ],
+                correct: 0,
+                exp: "La cooperación exige coordinar medidas e intercambiar información entre empresas concurrentes."
+            },
+            // 54
+            {
+                q: "¿Qué es una 'auditoría de prevención de riesgos'?",
+                options: [
+                    "Un procedimiento técnico para comprobar cómo funciona el sistema de gestión de prevención de la empresa y si es eficaz.",
+                    "Una inspección fiscal de cuentas y balances contables.",
+                    "Un examen psicotécnico a los directivos.",
+                    "Una auditoría informática de ciberseguridad."
+                ],
+                correct: 0,
+                exp: "La auditoría evalúa técnicamente la eficacia del sistema de gestión preventiva implantado."
+            },
+            // 55
+            {
+                q: "¿En qué casos es obligatoria la realización de una auditoría preventiva externa para una empresa?",
+                options: [
+                    "Cuando no se haya concertado el servicio de prevención con una entidad especializada externa y la empresa no disponga de servicio propio, o cuando lo exija la autoridad laboral.",
+                    "Obligatoriamente cada semana en todas las empresas.",
+                    "Solo en empresas de más de 10.000 trabajadores.",
+                    "Nunca es obligatoria en España."
+                ],
+                correct: 0,
+                exp: "Se exige auditoría externa si la modalidad preventiva no cubre ciertos requisitos o por mandato de la autoridad."
+            },
+            // 56
+            {
+                q: "¿Qué son los equipos de protección individual (EPI) en relación con las medidas de prevención?",
+                options: [
+                    "Equipos destinados a ser llevados por el trabajador para protegerle de uno o varios riesgos (último recurso de protección).",
+                    "Sistemas de ventilación general instalados en los techos de las naves.",
+                    "Resguardos mecánicos fijos de las máquinas industriales.",
+                    "Barandillas perimetrales de protección colectiva."
+                ],
+                correct: 0,
+                exp: "Los EPIs son equipos llevados por el trabajador como último recurso defensivo."
+            },
+            // 57
+            {
+                q: "¿Qué diferencia existe entre protección colectiva y protección individual?",
+                options: [
+                    "La colectiva protege simultáneamente a varios trabajadores (ej. barandillas), y la individual protege exclusivamente a un trabajador (ej. casco, arnés).",
+                    "La individual es obligatoria y la colectiva es opcional.",
+                    "La colectiva la paga el trabajador y la individual el Estado.",
+                    "No hay diferencia conceptual en la LPRL."
+                ],
+                correct: 0,
+                exp: "La colectiva protege a varios a la vez y la individual a una sola persona."
+            },
+            // 58
+            {
+                q: "¿Qué obligación impone la LPRL respecto al orden de prioridad entre protección colectiva e individual?",
+                options: [
+                    "Se debe anteponer siempre la protección colectiva a la individual, utilizando esta última solo cuando la colectiva sea insuficiente.",
+                    "Se debe anteponer la individual por ser más económica.",
+                    "Ambas tienen exactamente el mismo rango de preferencia legal.",
+                    "El trabajador elige libremente cuál prefiere usar."
+                ],
+                correct: 0,
+                exp: "La ley exige anteponer la protección colectiva a la individual."
+            },
+            // 59
+            {
+                q: "¿Qué es la señalización de seguridad en el trabajo?",
+                options: [
+                    "Una técnica de seguridad que proporciona indicaciones relativas a la seguridad o salud mediante paneles, colores, señales acústicas o gestuales.",
+                    "Una medida sustitutoria perfecta de las protecciones mecánicas.",
+                    "Un sistema de iluminación nocturna decorativa.",
+                    "Un código secreto de comunicación entre mandos."
+                ],
+                correct: 0,
+                exp: "La señalización proporciona indicaciones de seguridad mediante paneles, colores, acústica o gestos."
+            },
+            // 60
+            {
+                q: "¿Qué color de seguridad se utiliza en los paneles para indicar 'prohibición' y 'material de lucha contra incendios'?",
+                options: [
+                    "El color rojo.",
+                    "El color verde.",
+                    "El color azul.",
+                    "El color amarillo."
+                ],
+                correct: 0,
+                exp: "El color rojo indica prohibición, peligro-alarma y equipos de lucha contra incendios."
+            },
+            // 61
+            {
+                q: "¿Qué indica una señal de seguridad de forma redonda con pictograma blanco sobre fondo azul?",
+                options: [
+                    "Obligación.",
+                    "Prohibición.",
+                    "Advertencia de peligro.",
+                    "Salvamento o socorro."
+                ],
+                correct: 0,
+                exp: "El azul en forma redonda indica obligación."
+            },
+            // 62
+            {
+                q: "¿Qué forma geométrica y color tienen las señales de advertencia de peligro?",
+                options: [
+                    "Triangular, con pictograma negro sobre fondo amarillo y bordes negros.",
+                    "Redonda, con pictograma rojo sobre fondo blanco.",
+                    "Rectangular, con pictograma blanco sobre fondo verde.",
+                    "Cuadrada, con pictograma azul."
+                ],
+                correct: 0,
+                exp: "Las de advertencia son triangulares con fondo amarillo y bordes negros."
+            },
+            // 63
+            {
+                q: "¿Qué indican las señales rectangulares o cuadradas con pictograma blanco sobre fondo verde?",
+                options: [
+                    "Salvamento, socorro o situación de seguridad (vías de evacuación).",
+                    "Prohibición de acceso general.",
+                    "Riesgo químico corrosivo severo.",
+                    "Equipos de extinción de incendios."
+                ],
+                correct: 0,
+                exp: "El fondo verde en formato rectangular o cuadrado indica salvamento o socorro."
+            },
+            // 64
+            {
+                q: "¿Qué es un plan de autoprotección?",
+                options: [
+                    "El marco orgánico y funcional previsto para un centro con el objeto de prevenir y controlar los riesgos sobre personas y bienes.",
+                    "Un seguro privado de accidentes para autónomos.",
+                    "Un manual de defensa personal callejera para empleados nocturnos.",
+                    "La cuota de afiliación a una mutua."
+                ],
+                correct: 0,
+                exp: "El plan de autoprotección prevé la organización funcional para prevenir y controlar riesgos sobre personas y bienes."
+            },
+            // 65
+            {
+                q: "¿Qué papel juegan los servicios de emergencia externos (bomberos, 112, ambulancias) en los planes de emergencia?",
+                options: [
+                    "Son los apoyos exteriores previstos para intervenir cuando la emergencia desborda los medios propios de la empresa.",
+                    "Sustituyen por completo a los trabajadores designados.",
+                    "Solo actúan en días festivos nacionales.",
+                    "No tienen ninguna vinculación legal con el plan."
+                ],
+                correct: 0,
+                exp: "Los servicios externos actúan como apoyo cuando la emergencia desborda los medios propios."
+            },
+            // 66
+            {
+                q: "¿Qué es el 'colectivo de trabajadores especialmente sensibles' según el art. 25 de la LPRL?",
+                options: [
+                    "Trabajadores que por sus características personales o estado biológico conocido son más vulnerables a determinados riesgos.",
+                    "Empleados con mayor antigüedad en la empresa.",
+                    "Directivos con sueldos superiores a la media.",
+                    "Personal administrativo con jornada de verano."
+                ],
+                correct: 0,
+                exp: "Son trabajadores más vulnerables por características personales o estado biológico conocido."
+            },
+            // 67
+            {
+                q: "¿Qué obligación específica tiene el empresario respecto a las trabajadoras embarazadas o en periodo de lactancia?",
+                options: [
+                    "Garantizar una protección específica adaptando el puesto o evitando la exposición a riesgos que puedan afectar su salud o la del feto.",
+                    "Despedirlas automáticamente de forma procedente por maternidad.",
+                    "Prohibirles el acceso a cualquier tipo de formación teórica.",
+                    "Reducirles el salario neto en un 50%."
+                ],
+                correct: 0,
+                exp: "El empresario debe garantizar protección específica adaptando el puesto o evitando riesgos para la gestación o lactancia."
+            },
+            // 68
+            {
+                q: "¿Qué restricciones y cautelas especiales establece la normativa para los trabajadores menores de 18 años?",
+                options: [
+                    "Prohibición de realizar determinados trabajos peligrosos, nocturnos o insalubres, exigiendo una supervisión y formación reforzadas.",
+                    "Obligación de trabajar 60 horas semanales para adquirir experiencia.",
+                    "Exención total de cumplir las normas de seguridad de la fábrica.",
+                    "Ninguna, tienen exactamente el mismo régimen que los adultos."
+                ],
+                correct: 0,
+                exp: "Se prohíben trabajos peligrosos o nocturnos y se exige supervisión y formación reforzada para menores."
+            },
+            // 69
+            {
+                q: "¿Por qué los trabajadores temporales y de ETT presentan estadísticamente mayores índices de siniestralidad laboral?",
+                options: [
+                    "Por la inexperiencia, el desconocimiento del puesto, la falta de acogida adecuada y la asignación a tareas más peligrosas.",
+                    "Porque trabajan con maquinaria de última generación sin homologar.",
+                    "Porque están exentos de usar equipos de protección individual.",
+                    "Porque sus contratos duran menos de cinco minutos."
+                ],
+                correct: 0,
+                exp: "Presentan mayor siniestralidad por inexperiencia, desconocimiento, acogida insuficiente y tareas peligrosas."
+            },
+            // 70
+            {
+                q: "¿Qué es la Agencia Europea para la Seguridad y la Salud en el Trabajo (EU-OSHA)?",
+                options: [
+                    "El organismo de información de la Unión Europea en materia de seguridad y salud laboral con sede en Bilbao.",
+                    "Un tribunal penal internacional de justicia laboral.",
+                    "Una multinacional farmacéutica privada.",
+                    "Un fondo europeo de pensiones de jubilación."
+                ],
+                correct: 0,
+                exp: "La EU-OSHA es el organismo de información comunitario en seguridad y salud, con sede en Bilbao."
+            },
+            // 71
+            {
+                q: "¿Qué se entiende por 'cultura preventiva' en el ámbito de una organización?",
+                options: [
+                    "El conjunto de valores, actitudes, percepciones y pautas de comportamiento compartidas respecto a la importancia de la seguridad y salud.",
+                    "La cantidad de manuales impresos acumulados en las estanterías.",
+                    "El número de multas pagadas a la inspección de trabajo.",
+                    "La obligatoriedad de llevar corbata en la oficina."
+                ],
+                correct: 0,
+                exp: "La cultura preventiva es el conjunto de valores, actitudes y comportamientos compartidos sobre seguridad."
+            },
+            // 72
+            {
+                q: "¿Qué es un EPI de categoría III?",
+                options: [
+                    "Equipos que protegen contra riesgos graves, mortales o irreversibles (ej. arneses anticaídas, equipos de protección respiratoria compleja).",
+                    "Guantes sencillos de jardinería doméstica.",
+                    "Gafas graduadas de lectura para oficinas.",
+                    "Uniformes de algodón corporativos corrientes."
+                ],
+                correct: 0,
+                exp: "La categoría III protege contra riesgos graves, mortales o irreversibles."
+            },
+            // 73
+            {
+                q: "¿Qué es un EPI de categoría I?",
+                options: [
+                    "Equipos para riesgos mínimos cuyas consecuencias pueden ser percibidas a tiempo por el usuario (ej. guantes de limpieza suave).",
+                    "Equipos para protección nuclear y radiológica.",
+                    "Arneses de suspensión para trabajos verticales en altura.",
+                    "Equipos de aislamiento autónomo de oxígeno."
+                ],
+                correct: 0,
+                exp: "La categoría I cubre riesgos mínimos de consecuencias apreciables a tiempo."
+            },
+            // 74
+            {
+                q: "¿Qué cubre la categoría II de los EPIs?",
+                options: [
+                    "Riesgos intermedios que no son de categoría I ni III (ej. calzado de seguridad con puntera reforzada).",
+                    "Riesgos mortales exclusivamente.",
+                    "Riesgos de baja intensidad estética.",
+                    "Riesgos biológicos de nivel 4."
+                ],
+                correct: 0,
+                exp: "La categoría II cubre riesgos de carácter intermedio."
+            },
+            // 75
+            {
+                q: "¿Qué requisito de homologación comercial europea deben llevar impreso visiblemente todos los EPIs legales?",
+                options: [
+                    "El marcado CE.",
+                    "El sello notarial de la comunidad autónoma.",
+                    "La firma autógrafa del ministro de trabajo.",
+                    "Un código de barras de comercio local."
+                ],
+                correct: 0,
+                exp: "Todos los EPIs deben llevar de forma visible el marcado CE."
+            },
+            // 76
+            {
+                q: "¿Qué es el derecho a la 'consulta y participación' de los trabajadores en prevención?",
+                options: [
+                    "El derecho a ser consultados y participar en todas las cuestiones que afecten a la seguridad y salud en el trabajo a través de sus representantes.",
+                    "El derecho a decidir unilateralmente el horario comercial de la empresa.",
+                    "La facultad de vetar cualquier contrato mercantil con clientes.",
+                    "La obligación de auditar los balances contables."
+                ],
+                correct: 0,
+                exp: "Los trabajadores tienen derecho a ser consultados y participar a través de sus representantes."
+            },
+            // 77
+            {
+                q: "¿Qué es el derecho a la 'vigilancia de la salud'?",
+                options: [
+                    "El derecho de los trabajadores a una revisión periódica de su estado de salud en función de los riesgos a los que estén expuestos.",
+                    "La obligación de someterse a controles policiales diarios en la puerta.",
+                    "Un seguro médico privado opcional de hospitalización general.",
+                    "Un servicio de gimnasio subvencionado."
+                ],
+                correct: 0,
+                exp: "Garantiza revisiones periódicas de salud adaptadas a los riesgos del puesto."
+            },
+            // 78
+            {
+                q: "¿Qué ocurre si un trabajador incumple reiteradamente las normas de seguridad facilitadas por la empresa a pesar de ser advertido?",
+                options: [
+                    "Puede ser sancionado disciplinariamente por la empresa conforme al Estatuto de los Trabajadores y el convenio colectivo.",
+                    "La empresa queda exenta de toda responsabilidad penal futura.",
+                    "El trabajador recibe una bonificación salarial por sinceridad.",
+                    "Se le asciende automáticamente de categoría."
+                ],
+                correct: 0,
+                exp: "El incumplimiento reiterado de normas de seguridad por el trabajador puede acarrear sanciones disciplinarias."
+            },
+            // 79
+            {
+                q: "¿Qué es una 'enfermedad derivada del trabajo' no catalogada oficialmente como profesional?",
+                options: [
+                    "Aquella patología que, aunque influida por el trabajo, no figura en el cuadro legal oficial de enfermedades profesionales (siendo tratada a menudo como enfermedad común).",
+                    "Un accidente de trabajo súbito e imprevisto.",
+                    "Una lesión deportiva ocurrida un domingo.",
+                    "Un proceso infeccioso generalizado agudo."
+                ],
+                correct: 0,
+                exp: "Son patologías relacionadas con el trabajo pero ausentes del cuadro oficial cerrado."
+            },
+            // 80
+            {
+                q: "¿Qué son los 'costes sociales' de los accidentes laborales?",
+                options: [
+                    "Los que recaen sobre el conjunto de la sociedad (pérdida de capital humano, prestaciones de la seguridad social, asistencia sanitaria pública y sufrimiento familiar).",
+                    "Las cuotas de los sindicatos de clase.",
+                    "Los impuestos municipales de circulación de vehículos.",
+                    "Los gastos de publicidad corporativa de la empresa."
+                ],
+                correct: 0,
+                exp: "Afectan a toda la sociedad en forma de prestaciones, asistencia, pérdida de capital humano y daño familiar."
+            },
+            // 81
+            {
+                q: "¿Cuál es el objetivo principal del análisis estadístico de la siniestralidad laboral?",
+                options: [
+                    "Conocer las causas, frecuencias y gravedades de los accidentes para planificar políticas correctoras y preventivas eficaces.",
+                    "Establecer cuotas de mercado bursátil para los accionistas.",
+                    "Sancionar económicamente a los trabajadores más ancianos.",
+                    "Calcular el IPC mensual del sector servicios."
+                ],
+                correct: 0,
+                exp: "Sirve para conocer causas y frecuencias y planificar medidas preventivas correctoras."
+            },
+            // 82
+            {
+                q: "¿Qué es el 'Índice de Frecuencia' en estadística de siniestralidad?",
+                options: [
+                    "El número de accidentes con baja por cada millón de horas trabajadas.",
+                    "El porcentaje de trabajadores fallecidos al año.",
+                    "El coste medio en euros por cada baja médica.",
+                    "El número total de horas trabajadas en una década."
+                ],
+                correct: 0,
+                exp: "Mide el número de accidentes con baja por cada millón de horas trabajadas."
+            },
+            // 83
+            {
+                q: "¿Qué mide el 'Índice de Gravedad' en la siniestralidad laboral?",
+                options: [
+                    "El número de jornadas perdidas por accidentes de trabajo con baja por cada mil horas trabajadas.",
+                    "La proporción de trabajadores que superan los 50 años.",
+                    "La cantidad de multas graves impuestas por la inspección.",
+                    "El volumen total de producción industrial."
+                ],
+                correct: 0,
+                exp: "Mide las jornadas perdidas por accidentes con baja por cada mil horas trabajadas."
+            },
+            // 84
+            {
+                q: "¿Qué representa el 'Índice de Incidencia' en los accidentes de trabajo?",
+                options: [
+                    "El número de accidentes (con o sin baja) ocurridos por cada mil trabajadores expuestos.",
+                    "La media de días de hospitalización por siniestro.",
+                    "El porcentaje de mujeres embarazadas en la plantilla.",
+                    "El cociente entre el salario y la siniestralidad."
+                ],
+                correct: 0,
+                exp: "Mide el número de accidentes ocurridos por cada mil trabajadores expuestos."
+            },
+            // 85
+            {
+                q: "¿Qué se entiende por 'ergonomía ambiental'?",
+                options: [
+                    "La rama de la ergonomía que estudia y acondiciona los factores ambientales del puesto (luz, ruido, temperatura, humedad).",
+                    "El diseño de las carcasas exteriores de los ordenadores portátiles.",
+                    "La repoblación forestal en los alrededores de las fábricas.",
+                    "El reciclaje de residuos químicos líquidos."
+                ],
+                correct: 0,
+                exp: "Estudia y acondiciona factores ambientales como luz, ruido, temperatura y humedad."
+            },
+            // 86
+            {
+                q: "¿Qué estudia la 'ergonomía geométrica o dimensional'?",
+                options: [
+                    "La adaptación de las dimensiones del puesto de trabajo, espacios, herramientas y mobiliario a las medidas antropométricas del cuerpo humano.",
+                    "Las figuras geométricas de las señales de seguridad óptica.",
+                    "Los planos de arquitectura de las salidas de emergencia.",
+                    "El cálculo de volúmenes de almacenamiento de gas."
+                ],
+                correct: 0,
+                exp: "Adapta dimensiones de puestos, espacios y mobiliario a las medidas antropométricas."
+            },
+            // 87
+            {
+                q: "¿Qué es la 'ergonomía temporal'?",
+                options: [
+                    "La que analiza la organización del tiempo de trabajo (horarios, turnos, duración de la jornada, pausas y ritmos).",
+                    "El cálculo de la caducidad de los productos químicos.",
+                    "El tiempo exacto que tarda en apagarse un incendio.",
+                    "La duración legal de un contrato temporal por ETT."
+                ],
+                correct: 0,
+                exp: "Analiza el tiempo de trabajo, turnos, duración, pausas y ritmos."
+            },
+            // 88
+            {
+                q: "¿Qué es la fatiga mental en el entorno laboral moderno?",
+                options: [
+                    "Una disminución de la capacidad mental y de rendimiento debido a una sobrecarga en el procesamiento de información.",
+                    "Un daño cerebral irreversible por contacto eléctrico.",
+                    "La pérdida absoluta de memoria a largo plazo por edad avanzada.",
+                    "El cansancio muscular en las piernas tras estar de pie."
+                ],
+                correct: 0,
+                exp: "Es la disminución de capacidad y rendimiento por sobrecarga en el procesamiento de información."
+            },
+            // 89
+            {
+                q: "¿Qué medidas ayudan a prevenir la fatiga mental en oficinas con pantallas de visualización?",
+                options: [
+                    "Establecer pausas periódicas, alternar tareas, simplificar información y asegurar un diseño ergonómico de software y hardware.",
+                    "Aumentar la velocidad de tecleo obligatoria.",
+                    "Suprimir los descansos para terminar antes la jornada.",
+                    "Apagar todas las luces de la sala."
+                ],
+                correct: 0,
+                exp: "Se previene con pausas, alternancia de tareas, simplificación y buen diseño ergonómico."
+            },
+            // 90
+            {
+                q: "¿Qué es la insatisfacción laboral?",
+                options: [
+                    "Un estado emocional negativo que experimenta el trabajador cuando su puesto no satisface sus expectativas, necesidades o aspiraciones.",
+                    "Una enfermedad infecciosa aguda del aparato digestivo.",
+                    "Un error contable en la nómina mensual.",
+                    "El rechazo a utilizar los equipos de protección individual."
+                ],
+                correct: 0,
+                exp: "Es el estado emocional negativo cuando el puesto no satisface las expectativas o necesidades del empleado."
+            },
+            // 91
+            {
+                q: "¿Qué es el derecho a la 'paralización de actividades' en caso de riesgo grave e inminente?",
+                options: [
+                    "La facultad de los representantes de los trabajadores (o mayoría de la plantilla) para acordar la paralización si el empresario no lo hace.",
+                    "La huelga general indefinida convocada por los sindicatos nacionales.",
+                    "El cierre patronal por quiebra económica.",
+                    "La suspensión de permisos de conducir por tráfico."
+                ],
+                correct: 0,
+                exp: "Los representantes o la mayoría pueden acordar la paralización si el riesgo es inminente y la empresa no actúa."
+            },
+            // 92
+            {
+                q: "¿Qué es un 'delegado sindical' y en qué se diferencia del 'delegado de prevención'?",
+                options: [
+                    "El delegado sindical representa a los afiliados de un sindicato concreto, mientras que el delegado de prevención representa al conjunto de la plantilla en materia de seguridad y salud.",
+                    "Son exactamente el mismo cargo con idénticas funciones jurídicas.",
+                    "El delegado sindical solo puede ser elegido en empresas públicas.",
+                    "El delegado de prevención no tiene acceso a los informes de accidentes."
+                ],
+                correct: 0,
+                exp: "El sindicalista representa a afiliados de su sindicato y el de prevención a toda la plantilla en salud laboral."
+            },
+            // 93
+            {
+                q: "¿Qué es la 'tarjeta profesional de la construcción' (TPC)?",
+                options: [
+                    "Un documento que acredita la formación específica en prevención de riesgos recibida por el trabajador del sector de la construcción.",
+                    "Una tarjeta de crédito bancaria para gastos de obra.",
+                    "El carnet de conducir vehículos pesados de transporte.",
+                    "Un permiso de residencia temporal para extranjeros."
+                ],
+                correct: 0,
+                exp: "La TPC acredita la formación en prevención de riesgos recibida en el sector de la construcción."
+            },
+            // 94
+            {
+                q: "¿Qué papel juega la OIT (Organización Internacional del Trabajo) en la prevención mundial?",
+                options: [
+                    "Fijar convenios y normas internacionales sobre el trabajo digno, la seguridad y la salud laboral.",
+                    "Financiar empresas privadas en situación de quiebra.",
+                    "Juzgar penalmente a directivos corruptos en tribunales locales.",
+                    "Establecer los tipos de interés bancario europeo."
+                ],
+                correct: 0,
+                exp: "La OIT fija convenios y normas internacionales sobre trabajo digno y seguridad laboral."
+            },
+            // 95
+            {
+                q: "¿Qué es una directiva europea de seguridad y salud?",
+                options: [
+                    "Una norma jurídica comunitaria que fija objetivos mínimos que los Estados miembros deben transponer a sus legislaciones nacionales.",
+                    "Una recomendación moral de carácter voluntario sin fuerza de ley.",
+                    "Una sentencia del Tribunal de Estrasburgo sobre multas de tráfico.",
+                    "Un tratado comercial con países de América Latina."
+                ],
+                correct: 0,
+                exp: "Es una norma comunitaria de mínimos que los Estados deben transponer a su legislación."
+            },
+            // 96
+            {
+                q: "¿Qué es un 'protocolo de prevención de riesgos psicosociales'?",
+                options: [
+                    "Un conjunto de directrices y procedimientos internos para prevenir, detectar y resolver situaciones de conflicto, estrés o acoso.",
+                    "Un tratamiento farmacológico psiquiátrico obligatorio.",
+                    "Una prueba física de resistencia muscular en gimnasio.",
+                    "Un examen psicotécnico de conducción nocturna."
+                ],
+                correct: 0,
+                exp: "Son directrices internas para prevenir, detectar y resolver conflictos, estrés o acoso."
+            },
+            // 97
+            {
+                q: "¿Qué es la 'carga física' de trabajo?",
+                options: [
+                    "El conjunto de requerimientos físicos a los que se ve sometido el trabajador a lo largo de su jornada (manejo de cargas, posturas, movimientos).",
+                    "El peso en toneladas de las materias primas del almacén.",
+                    "La cantidad de horas extraordinarias nocturnas.",
+                    "El coste salarial de la contratación física."
+                ],
+                correct: 0,
+                exp: "Es el conjunto de requerimientos físicos por manipulación, posturas y movimientos."
+            },
+            // 98
+            {
+                q: "¿Qué establece la guía técnica sobre manipulación manual de cargas?",
+                options: [
+                    "Recomendaciones y límites orientativos de peso (generalmente máximo 25 kg en condiciones ideales) para evitar lesiones dorsolumbares.",
+                    "La prohibición absoluta de levantar objetos de más de un kilo.",
+                    "La obligación de usar carretillas elevadoras automáticas en oficinas.",
+                    "El peso mínimo obligatorio que debe levantar cada operario."
+                ],
+                correct: 0,
+                exp: "Fija recomendaciones y límites de peso (máximo 25 kg en condiciones ideales) para evitar lesiones."
+            },
+            // 99
+            {
+                q: "¿Qué es el principio de 'precaución' en la gestión preventiva?",
+                options: [
+                    "Actuar adoptando medidas protectoras ante riesgos potenciales aunque no exista una certeza científica absoluta de su materialización inmediata.",
+                    "Esperar obligatoriamente a que se produzca el primer accidentado para actuar.",
+                    "Reducir las inversiones en seguridad cuando hay crisis económica.",
+                    "Externalizar todas las decisiones a consultoras externas."
+                ],
+                correct: 0,
+                exp: "Implica adoptar medidas protectoras ante riesgos potenciales aun sin certeza científica absoluta."
+            },
+            // 100
+            {
+                q: "¿Qué es la 'tarjeta sanitaria o historial médico de prevención'?",
+                options: [
+                    "El registro confidencial de los resultados de la vigilancia de la salud de un trabajador, accesible solo para el personal médico y el propio empleado.",
+                    "Una tarjeta de crédito para gastos farmacéuticos.",
+                    "Un informe público que se publica en el tablón de anuncios de la fábrica.",
+                    "El certificado de empadronamiento municipal."
+                ],
+                correct: 0,
+                exp: "Es el registro confidencial de vigilancia de la salud accesible solo para personal médico y el trabajador."
+            }
+        ];
+
+        let currentQuizQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+        let isAnswered = false;
+
+        function startQuiz() {
+            const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+            let numQuestions = parseInt(selectedMode);
+
+            // Mezclar y recortar preguntas
+            let shuffled = [...fullQuestionBank].sort(() => 0.5 - Math.random());
+            currentQuizQuestions = shuffled.slice(0, numQuestions);
+
+            currentIndex = 0;
+            score = 0;
+
+            document.getElementById('screen-welcome').classList.add('hidden');
+            document.getElementById('screen-results').classList.add('hidden');
+            document.getElementById('screen-quiz').classList.remove('hidden');
+            document.getElementById('badge-container').classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            isAnswered = false;
+            selectedOption = null;
+            document.getElementById('btn-next').classList.add('hidden');
+            document.getElementById('feedback-box').classList.add('hidden');
+
+            const q = currentQuizQuestions[currentIndex];
+            const total = currentQuizQuestions.length;
+
+            document.getElementById('question-counter').innerText = `Pregunta ${currentIndex + 1} de ${total}`;
+            const percent = Math.round(((currentIndex) / total) * 100);
+            document.getElementById('progress-percent').innerText = `${percent}%`;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('score-badge').innerText = `Puntuación: ${score} / ${currentIndex}`;
+
+            document.getElementById('question-text').innerText = q.q;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl bg-slate-900/60 border border-slate-700/60 hover:bg-slate-700/50 hover:border-indigo-500/50 transition font-medium text-sm sm:text-base text-slate-200 cursor-pointer flex items-start gap-3";
+                btn.innerHTML = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-slate-800 text-xs font-bold text-slate-400 shrink-0 border border-slate-700">${String.fromCharCode(65 + idx)}</span> <span>${opt}</span>`;
+                btn.onclick = () => selectOption(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(idx, btnElement) {
+            if (isAnswered) return;
+            isAnswered = true;
+
+            const q = currentQuizQuestions[currentIndex];
+            selectedOption = idx;
+
+            const optionsContainer = document.getElementById('options-container');
+            const buttons = optionsContainer.children;
+
+            if (idx === q.correct) {
+                score++;
+                btnElement.classList.remove('bg-slate-900/60', 'border-slate-700/60');
+                btnElement.classList.add('bg-teal-950/80', 'border-teal-500', 'text-teal-200');
+            } else {
+                btnElement.classList.remove('bg-slate-900/60', 'border-slate-700/60');
+                btnElement.classList.add('bg-rose-950/80', 'border-rose-500', 'text-rose-200');
+                // Marcar la correcta
+                buttons[q.correct].classList.remove('bg-slate-900/60', 'border-slate-700/60');
+                buttons[q.correct].classList.add('bg-teal-950/80', 'border-teal-500', 'text-teal-200');
+            }
+
+            // Mostrar feedback
+            const feedbackBox = document.getElementById('feedback-box');
+            feedbackBox.classList.remove('hidden');
+            if (idx === q.correct) {
+                feedbackBox.className = "p-4 rounded-xl mb-6 text-sm border bg-teal-950/40 border-teal-500/40 text-teal-200";
+                feedbackBox.innerHTML = `<strong>¡Correcto!</strong> ${q.exp}`;
+            } else {
+                feedbackBox.className = "p-4 rounded-xl mb-6 text-sm border bg-rose-950/40 border-rose-500/40 text-rose-200";
+                feedbackBox.innerHTML = `<strong>Incorrecto.</strong> ${q.exp}`;
+            }
+
+            document.getElementById('score-badge').innerText = `Puntuación: ${score} / ${currentIndex + 1}`;
+            document.getElementById('btn-next').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < currentQuizQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('screen-quiz').classList.add('hidden');
+            document.getElementById('badge-container').classList.add('hidden');
+            document.getElementById('screen-results').classList.remove('hidden');
+
+            const total = currentQuizQuestions.length;
+            const percent = Math.round((score / total) * 100);
+
+            document.getElementById('final-score').innerText = `${score} / ${total}`;
+            document.getElementById('final-percentage').innerText = `${percent}% de aciertos`;
+
+            const msg = document.getElementById('result-message');
+            if (percent >= 90) {
+                msg.innerText = "¡Excelente nivel! Dominas a la perfección todo el Tema 1 de FOL.";
+            } else if (percent >= 70) {
+                msg.innerText = "¡Muy buen trabajo! Tienes una sólida base sobre la salud laboral y los riesgos.";
+            } else if (percent >= 50) {
+                msg.innerText = "Buen intento, pero conviene repasar algunos apartados del tema.";
+            } else {
+                msg.innerText = "Es recomendable volver a repasar los apuntes del tema para afianzar los conceptos clave.";
+            }
+        }
+
+        function restartQuiz() {
+            document.getElementById('screen-quiz').classList.add('hidden');
+            document.getElementById('screen-results').classList.add('hidden');
+            document.getElementById('badge-container').classList.add('hidden');
+            document.getElementById('screen-welcome').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
